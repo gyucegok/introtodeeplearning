@@ -1,0 +1,1 @@
+- ./lab3/LLM_Finetuning_Vertex.ipynb: Updated setup_device function to print total CUDA memory.

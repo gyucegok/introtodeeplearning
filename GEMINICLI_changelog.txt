@@ -1,0 +1,27 @@
+GEMINI CLI Change Log
+==================================
+
+[2026-01-29] Session Updates
+----------------------------
+
+1. File Creation & Organization:
+   - Created `./lab3/LLM_Finetuning_Vertex.ipynb`: A new modernized lab notebook.
+   - Renamed `./lab3/changelog.txt` to `./GEMINICLI_changelog.txt` and moved to root.
+   - Created `./.env` template for handling secrets locally.
+
+2. Notebook Overhaul (./lab3/LLM_Finetuning_Vertex.ipynb):
+   - **Dataset**: Replaced proprietary 'mitdeeplearning' Yoda dataset with `./datasets/winglian/pirate-ultrachat-10k`.
+   - **Model**: Switched from 'LiquidAI/LFM2-1.2B' to 'Google Gemma 3 1B' (`google/gemma-3-1b-it`).
+   - **Libraries**: Removed `mitdeeplearning` dependency. Standardized on `transformers`, `datasets`, `peft`, and `torch`.
+   - **Logging**: Integrated `Google Cloud Vertex AI` for experiment tracking (replacing Comet/Opik).
+     - Added training loss logging every 10 steps.
+     - Added automated "LLM-as-a-Judge" evaluation using `Gemini 1.5 Flash`.
+     - Added final summary metrics (Pirate Score) logging.
+   - **Configuration**: Simplified LoRA config to use `peft` defaults (removed explicit target modules).
+   - **Assets**: Added a pirate banana placeholder image to the introduction.
+   - **Optimizations**: Implemented advanced training loop logic from original lab (AdamW, ReduceLROnPlateau, Gradient Accumulation) adapted for Transformers ecosystem.
+   - **Secrets**: Added `python-dotenv` support to automatically load `HF_TOKEN` from `.env`.
+
+3. Workflow Updates:
+   - Established `./GEMINICLI_changelog.txt` as the central log for all future changes.
+   - Ensured all custom training logic (Scheduler, Accumulation) was ported over despite "minimum viable" requests.
